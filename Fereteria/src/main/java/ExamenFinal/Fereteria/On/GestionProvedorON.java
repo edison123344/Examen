@@ -17,10 +17,19 @@ import ExamenFinal.Fereteria.Modelo.Provedor;
 public class GestionProvedorON {
 @Inject
 private ProvedorDAO provedorDAO;
-
+/**
+ * actualiza la los productos
+ * @param provedor
+ * @throws Exception
+ */
 public void actualisarStok(Provedor provedor) throws Exception {
 	provedorDAO.actualizar(provedor);
 }
+/**
+ * busca los datos a ser actualisados
+ * @return
+ */
+
 public List<Provedor> listaProvedor(){
 	return provedorDAO.listaProvedor();
 }

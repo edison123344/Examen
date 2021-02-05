@@ -21,6 +21,9 @@ public class GestionFereteriaON {
 	public void actualisarProductos(Fereteria fereteria) throws Exception {
 		fereteriaDAO.actualizar(fereteria);
 	}
+	public Fereteria datosAteriores(int id) throws Exception {
+		return fereteriaDAO.listarAnterior(id);
+	}
 
 	public List<Fereteria>ListaFereteria(){
 		return fereteriaDAO.listaProducto();

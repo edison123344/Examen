@@ -14,7 +14,11 @@ import ExamenFinal.Fereteria.Modelo.Provedor;
 public class ProvedorDAO {
 	@PersistenceContext
 	private EntityManager em;
-	
+	/**
+	 * actualisa el estoc que tiene  el probedor 
+	 * @param entity
+	 * @throws Exception
+	 */
 	  public void actualizar(Provedor  entity) throws Exception {
 	        try {
 	            em.merge(entity);
@@ -22,6 +26,10 @@ public class ProvedorDAO {
 	            throw new Exception("Error actualizar " +e.getMessage());
 	        }
 	    }
+	  /**
+	   * listaa los probedores disponibles
+	   * @return
+	   */
 	public List<Provedor> listaProvedor() {
 
 		try {	
@@ -31,6 +39,12 @@ public class ProvedorDAO {
 	    return null;
 	  }	
 }
+	/**
+	 * lista el provedor dependiendo el id provedor
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
 	public Provedor listar(int id) throws Exception {
 		try {
 			System.out.println("Estamos aca");

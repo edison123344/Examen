@@ -33,10 +33,11 @@ public class PedidoProductoBeans implements Serializable {
 	private GestionFereteriaON gestionfereteriaON;
 	private int id;//recolector
 	private List<Fereteria>productos;
-	
+	private int Unidades;
+	private Fereteria fereteria;
 	@PostConstruct
 	public void init()  {
-		listaProvedores();
+		listaProductos();
 		
 	}
 	
@@ -51,13 +52,43 @@ public class PedidoProductoBeans implements Serializable {
 	public String Solisitud(int id ) {
 		return "Pedido?faces-redirect=true&id="+id;
 	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public int getUnidades() {
+		return Unidades;
+	}
+
+	public void setUnidades(int unidades) {
+		Unidades = unidades;
+	}
+
 	public String cargarDatosEditar() throws Exception {
 		if(id!=0) {
-		//	polisa=asistenteON.buscar(idPoliza);
+			
+		gestionfereteriaON.datosAteriores(id);
+			
 		}
 		return "";
 	}
-	public void listaProvedores() {
+	public void listaProductos() {
 		productos=gestionfereteriaON.ListaFereteria();
+	}
+	public String GuardarActualisacion() throws Exception {
+		Fereteria actualisado=new Fereteria();
+		Fereteria anterior = fereteria;
+		anterior=gestionfereteriaON.datosAteriores(id);
+
+		actualisado.setStok(Unidades+anterior.getStok());
+	
+		gestionfereteriaON.actualisarProductos(actualisado);
+
+		return "AsitentePolizaListar";
 	}
 }
