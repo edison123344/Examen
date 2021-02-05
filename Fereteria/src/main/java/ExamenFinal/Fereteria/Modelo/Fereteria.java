@@ -27,8 +27,8 @@ public class Fereteria implements Serializable {
 	private int codigo;
 	private String nombreProducto;
 	private int Stok;
-	@OneToMany()
-	private List<Provedor> listaProvedor;
+	//@OneToMany()
+	private Provedor provedor;
 	public int getCodigo() {
 		return codigo;
 	}
@@ -47,12 +47,13 @@ public class Fereteria implements Serializable {
 	public void setStok(int stok) {
 		Stok = stok;
 	}
-	public List<Provedor> getListaProvedor() {
-		return listaProvedor;
+	public Provedor getProvedor() {
+		return provedor;
 	}
-	public void setListaProvedor(List<Provedor> listaProvedor) {
-		this.listaProvedor = listaProvedor;
+	public void setProvedor(Provedor provedor) {
+		this.provedor = provedor;
 	}
+
 	
 	
 }
